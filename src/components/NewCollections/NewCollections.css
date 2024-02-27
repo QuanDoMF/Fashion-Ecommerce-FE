@@ -1,77 +1,122 @@
-.new-collections{
-  display: flex;
-  flex-direction: column;
+.new-collections {
   align-items: center;
-  gap: 10px;
   margin-bottom: 100px;
+  width: 65%;
+  margin-left: auto; /* Căn lề trái */
+  margin-right: auto;
 }
+
 .new-collections h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: #171717;
   font-size: 50px;
   font-weight: 600;
+  
 }
+
 .new-collections hr {
+  margin-left: auto; /* Căn lề trái */
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 200px;
   height: 6px;
   border-radius: 10px;
   background: #252525;
 }
-.collections{
+
+.collections {
   margin-top: 50px;
-  display: flex;
-  gap: 30px;
 }
+
+.custom-arrow {
+  font-size: 30px;
+  color: rgb(160, 155, 155); /* Màu mặc định của mũi tên */
+  cursor: pointer;
+  transition: opacity 0.3s ease; /* Hiệu ứng mờ */
+}
+
+.custom-arrow:hover {
+  color: #817e7e;
+}
+
+/* CSS cho mũi tên điều hướng trái */
+.custom-arrow.left {
+  position: absolute;
+  top: 48%;
+  transform: translateY(-50%);
+  left: -50px; /* Điều chỉnh vị trí từ mép trái của slider */
+}
+
+/* CSS cho mũi tên điều hướng phải */
+.custom-arrow.right {
+  position: absolute;
+  top: 48%;
+  transform: translateY(-50%);
+  right: -50px; /* Điều chỉnh vị trí từ mép phải của slider */
+}
+
 .collections {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  margin-top: 50px;
-  gap: 30px
+  grid-template-columns: repeat(4, 1fr); /* 4 cột trong một hàng */
+  gap: 30px;
 }
-@media(max-width: 1280px){
-  
-  .new-collections h1{
+.custom-arrow {
+  z-index: 9999;
+}
+.slick-slider .slick-dots{
+  bottom: -40px;
+}
+
+/* Responsive */
+@media (max-width: 1280px) {
+  .new-collections h1 {
     font-size: 40px;
   }
-  .new-collections hr{
+  .new-collections hr {
     width: 160px;
     height: 4px;
   }
-  .collections{
+  .collections {
     gap: 20px;
     margin-top: 30px;
   }
 }
-@media(max-width: 1024px){
-  .new-collections h1{
+
+@media (max-width: 1024px) {
+  .new-collections h1 {
     font-size: 30px;
   }
-  .new-collections hr{
+  .new-collections hr {
     width: 120px;
     height: 3px;
   }
-  .collections{
+  .collections {
     gap: 15px;
     margin-top: 20px;
   }
 }
-@media(max-width: 800px){
-  .new-collections{
+
+@media (max-width: 800px) {
+  .new-collections {
     gap: 6px;
   }
-  .new-collections h1{
+  .new-collections h1 {
     font-size: 20px;
   }
-  .new-collections hr{
+  .new-collections hr {
     width: 100px;
   }
-  .collections{
+  .collections {
     gap: 5px;
   }
 }
-@media(max-width: 500px){
-  .collections{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
+
+@media (max-width: 500px) {
+  .collections {
+    grid-template-columns: repeat(2, 1fr); /* 2 cột trong một hàng */
   }
 }

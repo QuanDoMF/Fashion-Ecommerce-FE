@@ -1,9 +1,9 @@
-.footer {
+.custom-footer {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 50px
+  gap: 50px;
 }
 .footer-logo{
   display: flex;

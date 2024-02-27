@@ -1,0 +1,121 @@
+
+.order-summary {
+  background-color: rgba(0, 0, 0, .2);
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.customer-info {
+  background-color: rgba(0, 0, 0, .1);
+  padding: 5px;
+  border-radius: 5px;
+  margin-top: 4px;
+}
+
+.btn-checkout{
+  background-color: #f15a5a !important;
+  border-radius: 20px;
+  border: none !important;
+  outline: none !important;
+  padding: 13px 10px !important;
+  margin-top: 10px;
+}
+.btn-checkout:hover {
+  background-color: #077441 !important;
+  cursor: pointer;
+}
+
+.cart-table>tbody>tr>td {
+  padding: 20px 0px;
+  vertical-align: middle;
+}
+
+.product-image {
+  width: 40%;
+  margin-right: 4px;
+  padding: 0px 5px;
+  filter: alpha(opacity=20)
+}
+
+.btn-remove {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, .4);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+}
+
+.btn-remove:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, .5);
+}
+
+.cart-quantity-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart-quantity {
+  display: flex;
+  align-items: center;
+  width: 100px;
+  background-color: rgba(0, 0, 0, .4);
+  justify-content: space-between;
+  padding: 4px 10px;
+  border-radius: 15px;
+}
+
+.cart-quantity>span:first-child {
+  cursor: pointer;
+  width: 25px;
+  text-align: center;
+}
+
+.cart-quantity>span:nth-child(2) {
+  text-align: center;
+  flex-grow: 1;
+}
+
+.cart-quantity>span:last-child {
+  cursor: pointer;
+  width: 25px;
+  text-align: center;
+}
+
+.action-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu{
+  margin-bottom: 1px;
+  padding: 7px 2px;
+  text-decoration: none;
+}
+.active{
+  background-color: rgba(117, 186, 255, .5);
+}
+
+.order-table>thead>tr>th{
+  background-color: rgb(38, 134, 230);;
+  color: white;
+  padding: 10px 5px;
+}
+.order-table>tbody>tr>td{
+  padding: 8px 5px;
+}
+
+.product-table>thead>tr>th{
+  background-color: rgb(38, 134, 230);;
+  color: white;
+  padding: 10px 5px;
+}
+.product-table>tbody>tr>td{
+  padding: 8px 5px;
+}

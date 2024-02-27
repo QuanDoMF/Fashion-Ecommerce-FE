@@ -36,3 +36,8 @@
   font-size: 18px;
   font-weight: 500;
 }
+.shopcategory-loadmore:hover{
+  background: #cccbcb;
+  color: #ffffff;
+  transition: background 0.5s ease-in;
+}

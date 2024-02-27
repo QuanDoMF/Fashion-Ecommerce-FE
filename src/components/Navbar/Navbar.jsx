@@ -1,40 +1,65 @@
 
-import React, { useContext, useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import './Navbar.css'
 import logo from '../Assets/logo.png'
 import cart_icon from '../Assets/cart_icon.png'
 import { Link } from "react-router-dom";
-import { ShopContext } from "../../context/ShopContext";
+import { useSelector, useDispatch } from "react-redux";
+import { logout } from "../../slices/authSlice";
 import nav_dropdown from "../Assets/nav_dropdown.png"
+import { cartSelector } from "../../redux-toolkit/selector";
+import cartSlice from "../../slices/cartSlice";
+import { login } from "../../slices/authSlice";
 const Navbar = () => {
-  
-  const [menu, setMenu] = useState("shop")
-  const { getTotalCartItems } = useContext(ShopContext)
-  const menuRef = useRef()
+  const dispatch = useDispatch()
 
+  const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
+  const cart = useSelector(cartSelector)
+
+  const username = localStorage.getItem('username');
+
+  const [menu, setMenu] = useState("shop")
+  const menuRef = useRef()
   const dropdown_toggle = (e) => {
-      menuRef.current.classList.toggle('nav-menu-visible')
-      e.target.classList.toggle('open')
+    menuRef.current.classList.toggle('nav-menu-visible')
+    e.target.classList.toggle('open')
   }
+  const handleLogout = () => {
+    dispatch(logout());
+    localStorage.removeItem('auth-token');
+    dispatch(cartSlice.actions.resetCart())
+  };
   return (
-    <div className="navbar">
-        <div className="nav-logo">
-          <img src={logo} alt="" />
-          <p>SHOPPER</p>
-        </div>
-        <img className="nav-dropdown" onClick={dropdown_toggle} src={nav_dropdown} alt="" />
-        <ul ref={menuRef} className="nav-menu">
-          <li onClick={() => setMenu("shop")}><Link style={{ textDecoration: 'none'}} to='/'>Shop</Link>{menu === "shop" ? <hr />: ''} </li>
-          <li onClick={() => setMenu("mens")}><Link style={{ textDecoration: 'none'}} to='/mens'>Men</Link>{menu === "mens"? <hr/> : ''}</li>
-          <li onClick={() => setMenu("women")}><Link style={{ textDecoration: 'none'}} to='/womens'>Women</Link>{menu === "women"? <hr/> : ''}</li>
-          <li onClick={() => setMenu("kids")}><Link style={{ textDecoration: 'none'}} to='/kids'>Kids</Link>{menu === "kids"? <hr/> : ''}</li>
-        </ul>
-        <div className="nav-login-cart">
-          <Link to='/login'><button>Login</button></Link>
-          <Link to='/cart'> <img src={cart_icon} alt="" /></Link>
-          <div className="nav-cart-count">{getTotalCartItems()}</div>
-        </div>
-    </div>  
+    <div className="custom-navbar">
+      <div className="nav-logo d-flex align-items-center justify-content-center">
+        <span className="mb-1"><img src={logo} alt="" /></span>
+        <span>SHOPPER</span>
+      </div>
+      <img className="nav-dropdown" onClick={dropdown_toggle} src={nav_dropdown} alt="" />
+      <ul ref={menuRef} className="nav-menu">
+        <li onClick={() => setMenu("shop")}><Link style={{ textDecoration: 'none' }} to='/'>Shop</Link>{menu === "shop" ? <hr /> : ''} </li>
+        <li onClick={() => setMenu("mens")}><Link style={{ textDecoration: 'none' }} to='/mens'>Men</Link>{menu === "mens" ? <hr /> : ''}</li>
+        <li onClick={() => setMenu("women")}><Link style={{ textDecoration: 'none' }} to='/womens'>Women</Link>{menu === "women" ? <hr /> : ''}</li>
+        <li onClick={() => setMenu("kids")}><Link style={{ textDecoration: 'none' }} to='/kids'>Kids</Link>{menu === "kids" ? <hr /> : ''}</li>
+      </ul>
+      <div className="nav-login-cart">
+        {isLoggedIn ? (
+          <>
+            <span className="nav-username">
+              <span className="username-text">Welcome: {username}</span>
+            </span>
+
+            <Link to='/login'><button onClick={handleLogout}>Logout</button></Link>
+          </>
+
+        ) : <Link to='/login'><button>Login</button></Link>
+        }
+        <Link to='/cart'> <img src={cart_icon} alt="" /></Link>
+        {cart?.cartDetails?.length > 0 && (
+          <div className="nav-cart-count">{cart?.cartDetails?.length}</div>
+        )}
+      </div>
+    </div>
   )
 }
 export default Navbar

@@ -1,12 +1,12 @@
 
 import React from "react";
-import CartItems from "../components/CartItems/CartItems";
+import CartDetail from "../components/CartsDetail/CartsDetail";
 
 const Cart = () => {
-    return(
-      <div>
-        <CartItems />
-      </div>
-    )
+  return (
+    <div>
+      <CartDetail />
+    </div>
+  )
 }
 export default Cart
