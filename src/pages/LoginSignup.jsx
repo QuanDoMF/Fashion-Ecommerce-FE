@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import './Css/LoginSignup.css';
 import { useDispatch } from "react-redux";
 import { login } from "../slices/authSlice";
+import { API_ROOT } from "../utils/constants";
 // import BeatLoader from "react-spinners/BeatLoader";
 
 const schemaLogin = yup.object({
@@ -46,7 +47,7 @@ const LoginSignup = () => {
   const handleSignupSubmit = async (data) => {
     reset() // Đặt lại form trước khi kiểm tra state
     let responseData;
-    await fetch('http://localhost:4000/signup', {
+    await fetch(`${API_ROOT}/signup`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -71,7 +72,7 @@ const LoginSignup = () => {
   const handleLoginSubmit = async (data) => {
     const buildData = { ...data, username: '' }
     let responseData;
-    await fetch('http://localhost:4000/login', {
+    await fetch(`${API_ROOT}/login`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',

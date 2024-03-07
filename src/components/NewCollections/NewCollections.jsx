@@ -8,6 +8,9 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { fetchProductThunkAction } from "../../slices/productsSlice";
 import { productListSelector } from "../../redux-toolkit/selector";
 import { useSelector, useDispatch } from "react-redux";
+import { loadingSelector } from "../../redux-toolkit/selector";
+// import Spinner from "../Spinner/Spinner";
+
 const CustomArrow = ({ onClick, direction }) => {
   return (
     <div
@@ -32,6 +35,8 @@ const NewCollections = () => {
   const [activeDotIndex, setActiveDotIndex] = useState(0);
   const sliderRef = useRef(null);
 
+  const loading = useSelector(loadingSelector)
+
   useEffect(() => {
     const sliderElement = sliderRef.current.innerSlider.list;
     if (sliderElement) {
@@ -54,7 +59,6 @@ const NewCollections = () => {
       ></div>
     );
   };
-
   const settings = {
     dots: true,
     infinite: true,
@@ -85,7 +89,6 @@ const NewCollections = () => {
       },
     ],
   };
-
   if (totalSlides > 1) {
     settings.dots = true;
   }

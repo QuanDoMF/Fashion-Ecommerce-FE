@@ -1,6 +1,6 @@
 
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-
+import { API_ROOT } from "../utils/constants";
 const cartSlice = createSlice({
   name: 'cart',
   initialState: {
@@ -39,7 +39,7 @@ const cartSlice = createSlice({
         
         // add to DB
         if(localStorage.getItem('auth-token')){
-          fetch('http://localhost:4000/addtocart' ,{
+          fetch(`${API_ROOT}/addtocart` ,{
             method: 'POST',
             headers: {
               Accept: 'application/json',
@@ -64,7 +64,7 @@ const cartSlice = createSlice({
         state.cartInfo.subTotal = newSubTotal;
         state.cartInfo.total = state.cartInfo.subTotal + state.cartInfo.shipping
         if(localStorage.getItem('auth-token')){
-          fetch('http://localhost:4000/incrementformcart' ,{
+          fetch(`${API_ROOT}/incrementformcart` ,{
             method: 'POST',
             headers: {
               Accept: 'application/json',
@@ -89,7 +89,7 @@ const cartSlice = createSlice({
         state.cartInfo.subTotal = newSubTotal;
         state.cartInfo.total = state.cartInfo.subTotal + state.cartInfo.shipping
         if(localStorage.getItem('auth-token')){
-          fetch('http://localhost:4000/descrementfromcart' ,{
+          fetch(`${API_ROOT}/descrementfromcart` ,{
             method: 'POST',
             headers: {
               Accept: 'application/json',
@@ -111,7 +111,7 @@ const cartSlice = createSlice({
         state.cartInfo.subTotal = newSubTotal;
         state.cartInfo.total = state.cartInfo.subTotal + state.cartInfo.shipping
         if(localStorage.getItem('auth-token')){
-          fetch('http://localhost:4000/removefromcart' ,{
+          fetch(`${API_ROOT}/removefromcart` ,{
             method: 'POST',
             headers: {
               Accept: 'application/form-data',
@@ -159,7 +159,7 @@ const cartSlice = createSlice({
 
 
 export const checkoutThunkAction = createAsyncThunk('cart/checkoutThunkAction', async (data) => {
-    let orderRes = await fetch('http://localhost:4000/orderList', {
+    let orderRes = await fetch(`${API_ROOT}/orderlist`, {
         method: "POST",
         headers: {
             'Content-Type': 'application/json'
@@ -172,7 +172,7 @@ export const checkoutThunkAction = createAsyncThunk('cart/checkoutThunkAction', 
 export const fetchCartThunkAction = createAsyncThunk('cart/fetchCartThunkAction', async (req, res) => {
   try{  
   if(localStorage.getItem('auth-token')){
-     let response = await fetch('http://localhost:4000/getcart' ,{
+     let response = await fetch(`${API_ROOT}/getcart` ,{
         method: 'POST',
         headers: {
           Accept: 'application/form-data',

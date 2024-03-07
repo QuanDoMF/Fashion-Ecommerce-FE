@@ -15,6 +15,10 @@
   font-size: 28px;
   font-weight: 600;
 }
+.nav-logo span:hover{
+  color: #FF4141;
+  transition: 0.2s ease-in; 
+}
 .nav-menu{
   display: flex;
   align-items: center;

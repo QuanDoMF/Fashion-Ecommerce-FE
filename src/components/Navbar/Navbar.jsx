@@ -31,10 +31,12 @@ const Navbar = () => {
   };
   return (
     <div className="custom-navbar">
-      <div className="nav-logo d-flex align-items-center justify-content-center">
-        <span className="mb-1"><img src={logo} alt="" /></span>
-        <span>SHOPPER</span>
-      </div>
+      <Link className="text-decoration-none" to={'/'}>
+        <div className="nav-logo d-flex align-items-center justify-content-center">
+          <span className="mb-1"><img src={logo} alt="" /></span>
+          <span>SHOPPER</span>
+        </div>
+      </Link>
       <img className="nav-dropdown" onClick={dropdown_toggle} src={nav_dropdown} alt="" />
       <ul ref={menuRef} className="nav-menu">
         <li onClick={() => setMenu("shop")}><Link style={{ textDecoration: 'none' }} to='/'>Shop</Link>{menu === "shop" ? <hr /> : ''} </li>

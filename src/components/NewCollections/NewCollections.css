@@ -67,6 +67,9 @@
 .custom-arrow {
   z-index: 9999;
 }
+/* .slick-slider{
+  width: 100%;
+} */
 .slick-slider .slick-dots{
   bottom: -40px;
 }
