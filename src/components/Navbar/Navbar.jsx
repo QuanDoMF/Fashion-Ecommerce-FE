@@ -16,7 +16,7 @@ const Navbar = () => {
   const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
   const cart = useSelector(cartSelector)
   const username = localStorage.getItem('username');
-  const [menu, setMenu] = useState("shop")
+  const [menu, setMenu] = useState("")
   useEffect(() => {
     // Khi location thay đổi, cập nhật menu tương ứng
     switch (location.pathname) {
