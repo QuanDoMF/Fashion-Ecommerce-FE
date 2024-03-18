@@ -3,7 +3,7 @@ import React, { useRef, useState, useEffect } from "react";
 import './Navbar.css'
 import logo from '../Assets/logo.png'
 import cart_icon from '../Assets/cart_icon.png'
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../slices/authSlice";
 import nav_dropdown from "../Assets/nav_dropdown.png"
@@ -12,13 +12,27 @@ import cartSlice from "../../slices/cartSlice";
 import { login } from "../../slices/authSlice";
 const Navbar = () => {
   const dispatch = useDispatch()
-
+  const location = useLocation()
   const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
   const cart = useSelector(cartSelector)
-
   const username = localStorage.getItem('username');
-
   const [menu, setMenu] = useState("shop")
+  useEffect(() => {
+    // Khi location thay đổi, cập nhật menu tương ứng
+    switch (location.pathname) {
+      case '/mens':
+        setMenu('mens');
+        break;
+      case '/womens':
+        setMenu('women');
+        break;
+      case '/kids':
+        setMenu('kids');
+        break;
+      default:
+        setMenu('shop');
+    }
+  }, [location.pathname]);
   const menuRef = useRef()
   const dropdown_toggle = (e) => {
     menuRef.current.classList.toggle('nav-menu-visible')

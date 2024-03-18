@@ -23,10 +23,10 @@ const CustomArrow = ({ onClick, direction }) => {
 };
 
 const NewCollections = () => {
-  const dispatch = useDispatch()
-  useEffect(() => {
-    dispatch(fetchProductThunkAction())
-  }, [dispatch])
+  // const dispatch = useDispatch()
+  // useEffect(() => {
+  //   // dispatch(fetchProductThunkAction())
+  // }, [dispatch])
   const selectProduct = useSelector(productListSelector)
   const all_product = selectProduct?.data
   const totalProducts = all_product?.length;

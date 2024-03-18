@@ -8,16 +8,30 @@ import NewsLetter from "../components/NewsLetter/NewsLetter";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProductPopularThunkAction, fetchProductThunkAction } from "../slices/productsSlice";
 import { loadingSelector } from "../redux-toolkit/selector";
-// import Spinner from "../components/Spinner/Spinner";
+import Spinner from "../components/Spinner/Spinner";
 const Shop = () => {
+  const dispatch = useDispatch()
+  const loadingProducts = useSelector(loadingSelector)
+  useEffect(() => {
+    dispatch(fetchProductThunkAction())
+  }, [])
+  console.log('loading', loadingProducts)
   return (
-    <div>
-      <Hero />
-      <Polular />
-      <Offers />
-      <NewCollections />
-      <NewsLetter />
-    </div>
+    <>
+      {
+        loadingProducts === 'loading' ? <Spinner /> :
+          (
+            <div>
+              <Hero />
+              <Polular />
+              <Offers />
+              <NewCollections />
+              <NewsLetter />
+            </div>
+          )
+      }
+    </>
+
   );
 };
 

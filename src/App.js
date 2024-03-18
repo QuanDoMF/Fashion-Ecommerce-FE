@@ -8,7 +8,6 @@ import Product from './pages/Product';
 import Cart from './pages/Cart';
 import LoginSignup from './pages/LoginSignup';
 import Footer from './components/Footer/Footer';
-
 function App() {
   return (
     <div >
